@@ -111,13 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ... (방명록, 탭 메뉴 등 다른 코드는 그대로) ...
-});
-
-// script.js 파일 맨 아래에 추가
-
-document.addEventListener('DOMContentLoaded', () => {
-  // ... (기존에 갤러리, 지도 탭 등의 코드가 있다면 여기에 그대로 둡니다) ...
+  // ... (방명록, 탭 메뉴 등 다른 코드는 그대로) ... // ... (기존에 갤러리, 지도 탭 등의 코드가 있다면 여기에 그대로 둡니다) ...
 
   // --- 방문록 기능 ---
   const scriptURL =
