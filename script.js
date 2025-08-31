@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 방문록 기능 ---
   const scriptURL =
-    'https://script.google.com/macros/s/AKfycbw97Uu-dDMOkrYDp-D6kJyGbRaccDUxKj89xsNIeWGEWJPHNiOfvCXoKsqhMSNkXqE/exec'; // ★★★ API URL 붙여넣기 ★★★
+    'https://script.google.com/macros/s/AKfycbz1RNGo1qg-FUb65gsE2WVcWplJjgPwARt10NDDLqtmR59OklRzZ8OITKTtHHHc-q69/exec'; // ★★★ API URL 붙여넣기 ★★★
   const form = document.getElementById('guestbook-form');
   const entriesContainer = document.getElementById('guestbook-entries');
 
