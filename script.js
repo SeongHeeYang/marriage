@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
         throw new Error(result.message || '알 수 없는 오류');
       }
       form.reset();
+      alert('방문록을 남겨주셔서 감사합니다. :)');
       await loadEntries(); // 목록 새로고침
     } catch (error) {
       console.error('글 등록 실패:', error);
