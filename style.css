@@ -320,3 +320,116 @@ p.tab-address {
 .nav-icons img:hover {
   transform: scale(1.1); /* 마우스 올렸을 때 약간 커지는 효과 */
 }
+
+/* style.css 파일 맨 아래에 추가 */
+
+/* --- 방문록(Guestbook) 섹션 --- */
+.guestbook {
+  background-color: #fdfaf6;
+  padding: 50px 20px;
+}
+
+#guestbook-form {
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#guestbook-form input,
+#guestbook-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0d9d1;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#guestbook-form input::placeholder,
+#guestbook-form textarea::placeholder {
+  color: #a9a9a9;
+}
+
+#guestbook-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#guestbook-form .btn-submit {
+  padding: 12px;
+  border: none;
+  background-color: #8d7b68; /* 메인 테마 색상과 유사하게 */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#guestbook-form .btn-submit:hover {
+  background-color: #6d6356;
+}
+
+#guestbook-entries {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.entry {
+  background: #fff;
+  border: 1px solid #f0e9e1;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #eee;
+}
+
+.entry-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #6d6356;
+}
+
+.entry-date {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.entry-message {
+  line-height: 1.6;
+  color: #333;
+}
+
+.no-entries {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+.btn-delete:hover {
+  color: #ff4d4d;
+}

@@ -113,3 +113,132 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ... (방명록, 탭 메뉴 등 다른 코드는 그대로) ...
 });
+
+// script.js 파일 맨 아래에 추가
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ... (기존에 갤러리, 지도 탭 등의 코드가 있다면 여기에 그대로 둡니다) ...
+
+  // --- 방문록 기능 ---
+  const scriptURL =
+    'https://script.google.com/macros/s/AKfycbw97Uu-dDMOkrYDp-D6kJyGbRaccDUxKj89xsNIeWGEWJPHNiOfvCXoKsqhMSNkXqE/exec'; // ★★★ API URL 붙여넣기 ★★★
+  const form = document.getElementById('guestbook-form');
+  const entriesContainer = document.getElementById('guestbook-entries');
+
+  // HTML 태그를 문자로 변환하는 함수 (보안 강화)
+  const escapeHTML = (str) => {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, (match) => {
+      const escape = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return escape[match];
+    });
+  };
+
+  // 방문록 글 불러오기
+  const loadEntries = async () => {
+    try {
+      const response = await fetch(scriptURL);
+      const entries = await response.json();
+      entriesContainer.innerHTML = ''; // 기존 목록 비우기
+
+      if (entries.length === 0) {
+        entriesContainer.innerHTML =
+          '<p class="no-entries">아직 등록된 축하 메시지가 없습니다.</p>';
+        return;
+      }
+
+      entries.forEach((entry) => {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'entry';
+        const entryDate = new Date(entry.timestamp).toLocaleDateString('ko-KR');
+
+        entryDiv.innerHTML = `
+                    <div class="entry-header">
+                        <span class="entry-name">${escapeHTML(
+                          entry.name,
+                        )}</span>
+                        <span class="entry-date">${entryDate}</span>
+                    </div>
+                    <p class="entry-message">${escapeHTML(
+                      entry.message,
+                    ).replace(/\n/g, '<br>')}</p>
+                    <button class="btn-delete" data-row="${
+                      entry.row
+                    }">삭제</button>
+                `;
+        entriesContainer.appendChild(entryDiv);
+      });
+    } catch (error) {
+      console.error('방명록 로딩 실패:', error);
+      entriesContainer.innerHTML =
+        '<p class="no-entries">방명록을 불러오는 데 실패했습니다.</p>';
+    }
+  };
+
+  // 폼 제출 처리 (새 글 등록)
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = '등록 중...';
+
+    const name = document.getElementById('guest-name').value;
+    const password = document.getElementById('guest-password').value;
+    const message = document.getElementById('guest-message').value;
+
+    const data = { action: 'add', name, password, message };
+
+    try {
+      await fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      form.reset();
+      await loadEntries(); // 목록 새로고침
+    } catch (error) {
+      console.error('글 등록 실패:', error);
+      alert('글 등록에 실패했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '글 남기기';
+    }
+  });
+
+  // 삭제 버튼 클릭 처리
+  entriesContainer.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('btn-delete')) {
+      const row = e.target.dataset.row;
+      const password = prompt('글 작성 시 입력했던 비밀번호를 입력하세요.');
+
+      if (password === null || password.trim() === '') return; // 취소했거나 입력 안 한 경우
+
+      const data = { action: 'delete', row, password };
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        const result = await response.json();
+        alert(result.message);
+        if (result.result === 'success') {
+          await loadEntries(); // 목록 새로고침
+        }
+      } catch (error) {
+        console.error('삭제 처리 실패:', error);
+        alert('삭제 요청 중 오류가 발생했습니다.');
+      }
+    }
+  });
+
+  // 페이지가 처음 로드될 때 방문록 글 불러오기
+  loadEntries();
+});
