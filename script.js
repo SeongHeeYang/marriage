@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      entries.forEach((entry) => {
+      entries.data.forEach((entry) => {
         const entryDiv = document.createElement('div');
         entryDiv.className = 'entry';
         const entryDate = new Date(entry.timestamp).toLocaleDateString('ko-KR');
