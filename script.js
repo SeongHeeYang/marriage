@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 방문록 기능 ---
   const scriptURL =
-    'https://script.google.com/macros/s/AKfycbz9mysLlE8fTYhEwLDlOLkBA4khtQOWxX8wAqWgRbCUElCMPj4yp4d3wiitmmDGwetuEg/exec'; // ★★★ API URL 붙여넣기 ★★★
+    'https://script.google.com/macros/s/AKfycbzjA3BrLeRsy1f8FwsdZ-s6T450JaoOjZS3mClDxexfdGPI_IuygD3dH2OJ28CipLztDQ/exec';
   const form = document.getElementById('guestbook-form');
   const entriesContainer = document.getElementById('guestbook-entries');
 
@@ -134,12 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
-  // 방문록 글 불러오기
+  // 방문록 글 불러오기 (GET 방식이므로 action 파라미터 없이 호출)
   const loadEntries = async () => {
     try {
       const response = await fetch(scriptURL);
       const entries = await response.json();
-      entriesContainer.innerHTML = ''; // 기존 목록 비우기
+      entriesContainer.innerHTML = '';
 
       if (entries.length === 0) {
         entriesContainer.innerHTML =
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  // 폼 제출 처리 (새 글 등록)
+  // 폼 제출 처리 (새 글 등록 - GET 방식)
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('.btn-submit');
@@ -186,41 +186,50 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = document.getElementById('guest-password').value;
     const message = document.getElementById('guest-message').value;
 
-    const data = { action: 'add', name, password, message };
+    // URL에 쿼리 파라미터로 데이터 추가
+    const params = new URLSearchParams({
+      action: 'add',
+      name: name,
+      password: password,
+      message: message,
+    });
+    const fetchURL = `${scriptURL}?${params.toString()}`;
 
     try {
-      await fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(fetchURL);
+      const result = await response.json();
+      if (result.result !== 'success') {
+        throw new Error(result.message || '알 수 없는 오류');
+      }
       form.reset();
       await loadEntries(); // 목록 새로고침
     } catch (error) {
       console.error('글 등록 실패:', error);
-      alert('글 등록에 실패했습니다. 잠시 후 다시 시도해주세요.');
+      alert('글 등록에 실패했습니다: ' + error.message);
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = '글 남기기';
     }
   });
 
-  // 삭제 버튼 클릭 처리
+  // 삭제 버튼 클릭 처리 (GET 방식)
   entriesContainer.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-delete')) {
       const row = e.target.dataset.row;
       const password = prompt('글 작성 시 입력했던 비밀번호를 입력하세요.');
 
-      if (password === null || password.trim() === '') return; // 취소했거나 입력 안 한 경우
+      if (password === null || password.trim() === '') return;
 
-      const data = { action: 'delete', row, password };
+      // URL에 쿼리 파라미터로 데이터 추가
+      const params = new URLSearchParams({
+        action: 'delete',
+        row: row,
+        password: password,
+      });
+      const fetchURL = `${scriptURL}?${params.toString()}`;
 
       try {
-        const response = await fetch(scriptURL, {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: { 'Content-Type': 'application/json' },
-        });
+        const response = await fetch(fetchURL);
         const result = await response.json();
         alert(result.message);
         if (result.result === 'success') {
