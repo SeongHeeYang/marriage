@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+:root {
+  --primary-color: #8d8b8b;
+  --text-color: #333;
+  --background-color: #fff;
+  --section-bg-color: #f9f9f9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #eaeaea;
+  color: var(--text-color);
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--background-color);
+}
+
+.section {
+  padding: 50px 25px;
+  text-align: center;
+}
+
+.section:nth-child(even) {
+  background-color: var(--section-bg-color);
+}
+
+.section-title {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+/* Header */
+.header .main-visual {
+  position: relative;
+  width: 100%;
+}
+.header img {
+  width: 100%;
+  display: block;
+}
+.header .main-title {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.header .main-title h1 {
+  margin: 5px 0;
+  font-size: 2.5em;
+  font-weight: 400;
+}
+.header .main-title p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* Intro */
+.intro-text {
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.parents-info {
+  display: flex;
+  justify-content: space-around;
+}
+.parents-info .parent-name {
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 10px;
+}
+
+/* Contact */
+.contact-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.contact-person p {
+  margin-bottom: 10px;
+}
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #333;
+  margin: 0 5px;
+  font-size: 0.9em;
+}
+.btn .fas {
+  margin-right: 5px;
+}
+
+/* Gallery */
+.gallery-container {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+  /* height 속성을 제거하고, 높이 변경 애니메이션을 위해 transition 추가 */
+  transition: height 0.4s ease-in-out;
+}
+
+.gallery-track {
+  display: flex;
+}
+
+.gallery-track.grabbing {
+  cursor: grabbing;
+}
+
+.gallery-track img {
+  width: 100%;
+  /* height를 auto로 설정하여 이미지의 원본 비율을 유지 */
+  height: auto;
+  flex-shrink: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+.gallery-nav {
+  margin-top: 15px;
+}
+.gallery-nav button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: var(--primary-color);
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/* Location */
+#map {
+  margin: 0 auto 15px auto;
+  border: 1px solid #eee;
+}
+.address {
+  margin-bottom: 20px;
+}
+.map-actions .btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+/* Guestbook */
+#guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+#guestbook-form input,
+#guestbook-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+#guestbook-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.btn-submit {
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+#guestbook-entries .entry {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-align: left;
+  border-radius: 5px;
+}
+#guestbook-entries .entry-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+#guestbook-entries .entry-name {
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 0.8em;
+  color: #999;
+  background-color: #f1f1f1;
+}
+/* Gallery 섹션에 아래 스타일 추가 또는 수정 */
+
+.gallery-container {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab; /* 드래그가 가능함을 나타내는 커서 */
+  user-select: none; /* 드래그 중 텍스트나 이미지가 선택되는 것을 방지 */
+}
+
+.gallery-track {
+  display: flex;
+  /* transition 속성은 snapping 애니메이션을 위해 JavaScript에서 제어 */
+}
+
+.gallery-track.grabbing {
+  cursor: grabbing; /* 드래그하는 동안의 커서 모양 */
+}
+
+.gallery-track img {
+  width: 100%;
+  flex-shrink: 0;
+  pointer-events: none; /* 이미지 자체에 이벤트가 걸려 드래그가 방해되는 것을 방지 */
+}
+
+/* 기존 .gallery-nav 스타일은 그대로 유지 */
+.gallery-nav {
+  margin-top: 15px;
+}
+.gallery-nav button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: var(--primary-color);
+  cursor: pointer;
+  margin: 0 10px;
+}
+/* Location Details & Tabs (새로 추가) */
+.location-details {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+ul.tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  border-bottom: 2px solid #ddd;
+}
+
+li.tab-link {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.95em;
+  color: #888;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px; /* 아래 테두리와 겹치게 */
+  transition: all 0.3s ease;
+}
+
+li.tab-link.active {
+  color: var(--primary-color); /* style.css 상단에 정의된 색상 변수 */
+  font-weight: 500;
+  border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+  display: none; /* 기본적으로 모든 탭 컨텐츠는 숨김 */
+  animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+  display: block; /* 활성화된 탭 컨텐츠만 보임 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+p.tab-address {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* 아이콘 사이 간격 */
+}
+
+.nav-icons a {
+  display: inline-block;
+}
+
+.nav-icons img {
+  width: 48px; /* 아이콘 크기 */
+  height: 48px;
+  border-radius: 50%; /* 동그란 아이콘 모양 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.nav-icons img:hover {
+  transform: scale(1.1); /* 마우스 올렸을 때 약간 커지는 효과 */
+}

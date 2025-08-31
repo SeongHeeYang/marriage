@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>양성희 ♥ 김예지 결혼합니다</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="main-visual">
+          <img src="image/main.png" />
+        </div>
+      </header>
+
+      <section class="section intro">
+        <h2 class="section-title">초대합니다</h2>
+        <p class="intro-text">
+          겨울을 지나 봄이 오듯 <br />
+          익숙한 듯 새로운 삶을 살아가려 합니다.<br />
+          서로 다른 두 사람이 남은 삶을 함께하며,<br />
+          심해 같은 슬픔과 우주 같은 기쁨을 나누고<br />
+          비로소 아름다운 꽃을 피워내고자 합니다.<br />
+          저희의 햇살이 되어주시고, 봄비가 되어주세요.<br />
+        </p>
+        <div class="parents-info">
+          <div class="groom-parents">
+            <p>
+              <span>신랑 양성희</span>
+              <span class="parent-name"> 故양철진・서정자의 아들</span>
+            </p>
+          </div>
+          <div class="bride-parents">
+            <p>
+              <span>신부 김예지</span>
+              <span class="parent-name"> 故김종식・채동순의 딸</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact">
+        <h2 class="section-title">연락처</h2>
+        <div class="contact-buttons">
+          <div class="contact-person">
+            <p>신랑에게 연락하기</p>
+            <a href="tel:010-2825-0309" class="btn"
+              ><i class="fas fa-phone"></i> 전화</a
+            >
+            <a href="sms:010-2825-0309" class="btn"
+              ><i class="fas fa-comment-sms"></i> 문자</a
+            >
+          </div>
+          <div class="contact-person">
+            <p>신부에게 연락하기</p>
+            <a href="tel:010-4894-4936" class="btn"
+              ><i class="fas fa-phone"></i> 전화</a
+            >
+            <a href="sms:010-4894-4936" class="btn"
+              ><i class="fas fa-comment-sms"></i> 문자</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery">
+        <h2 class="section-title">우리의 순간</h2>
+        <div class="gallery-container">
+          <div class="gallery-track">
+            <img src="image/sub1.png" alt="Gallery Image 1" />
+            <img src="image/sub2.png" alt="Gallery Image 1" />
+            <img src="image/sub3.png" alt="Gallery Image 1" />
+            <img src="image/IMG_7223.jpg" alt="Gallery Image 1" />
+            <img src="image/IMG_7228.jpg" alt="Gallery Image 2" />
+            <img src="image/IMG_7270.jpg" alt="Gallery Image 3" />
+            <img src="image/IMG_8511.jpg" alt="Gallery Image 4" />
+            <img src="image/IMG_8885.jpg" alt="Gallery Image 5" />
+            <img src="image/IMG_9031.jpg" alt="Gallery Image 6" />
+            <img src="image/IMG_9108.jpg" alt="Gallery Image 7" />
+            <img src="image/IMG_9259.jpg" alt="Gallery Image 8" />
+            <img src="image/IMG_9422.jpg" alt="Gallery Image 9" />
+            <img src="image/IMG_9426.jpg" alt="Gallery Image 10" />
+            <img src="image/IMG_9497.jpg" alt="Gallery Image 11" />
+            <img src="image/IMG_9520.jpg" alt="Gallery Image 12" />
+            <img src="image/IMG_9568.jpg" alt="Gallery Image 13" />
+            <img src="image/IMG_9591.jpg" alt="Gallery Image 14" />
+          </div>
+        </div>
+        <div class="gallery-nav">
+          <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+          <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <section class="section location">
+        <h2 class="section-title">오시는 길</h2>
+
+        <div id="map" style="width: 100%; height: 250px"></div>
+
+        <p class="address">서울시 OO구 OO로 123, OO웨딩홀</p>
+
+        <div class="location-details">
+          <ul class="tabs">
+            <li class="tab-link active" data-tab="parking1">주차장 1</li>
+            <li class="tab-link" data-tab="parking2">주차장 2</li>
+            <li class="tab-link" data-tab="parking3">주차장 3</li>
+            <li class="tab-link" data-tab="shuttle">셔틀 위치</li>
+          </ul>
+
+          <div id="parking1" class="tab-content active">
+            <p class="tab-address">주차장 1 주소: 서울시 OO구 OO로 100</p>
+            <div class="nav-icons">
+              <a
+                href="nmap://navigation?dlat=37.5132&dlng=127.0595&dname=OO웨딩홀 주차장1&appname=YOUR_APP_NAME"
+              >
+                <img
+                  src="https://i.ibb.co/L8T1Xv7/naver-map-icon.png"
+                  alt="네이버지도"
+                />
+              </a>
+              <a href="kakaomap://route?ep=37.5132,127.0595&by=CAR">
+                <img
+                  src="https://i.ibb.co/Y0KxJvP/kakaomap-icon.png"
+                  alt="카카오내비"
+                />
+              </a>
+              <a
+                href="tmap://route?goalname=OO웨딩홀 주차장1&goaly=37.5132&goalx=127.0595"
+              >
+                <img src="https://i.ibb.co/h9kygL6/tmap-icon.png" alt="티맵" />
+              </a>
+            </div>
+          </div>
+
+          <div id="parking2" class="tab-content">
+            <p class="tab-address">주차장 2 주소: 서울시 OO구 OO로 150</p>
+            <div class="nav-icons">
+              <a
+                href="nmap://navigation?dlat=37.5140&dlng=127.0600&dname=OO웨딩홀 주차장2&appname=YOUR_APP_NAME"
+              >
+                <img
+                  src="https://i.ibb.co/L8T1Xv7/naver-map-icon.png"
+                  alt="네이버지도"
+                />
+              </a>
+              <a href="kakaomap://route?ep=37.5140,127.0600&by=CAR">
+                <img
+                  src="https://i.ibb.co/Y0KxJvP/kakaomap-icon.png"
+                  alt="카카오내비"
+                />
+              </a>
+              <a
+                href="tmap://route?goalname=OO웨딩홀 주차장2&goaly=37.5140&goalx=127.0600"
+              >
+                <img src="https://i.ibb.co/h9kygL6/tmap-icon.png" alt="티맵" />
+              </a>
+            </div>
+          </div>
+
+          <div id="parking3" class="tab-content">
+            <p class="tab-address">주차장 3 주소: 서울시 OO구 OO로 200</p>
+            <div class="nav-icons">
+              <a
+                href="nmap://navigation?dlat=37.5155&dlng=127.0615&dname=OO웨딩홀 주차장3&appname=YOUR_APP_NAME"
+              >
+                <img
+                  src="https://i.ibb.co/L8T1Xv7/naver-map-icon.png"
+                  alt="네이버지도"
+                />
+              </a>
+              <a href="kakaomap://route?ep=37.5155,127.0615&by=CAR">
+                <img
+                  src="https://i.ibb.co/Y0KxJvP/kakaomap-icon.png"
+                  alt="카카오내비"
+                />
+              </a>
+              <a
+                href="tmap://route?goalname=OO웨딩홀 주차장3&goaly=37.5155&goalx=127.0615"
+              >
+                <img src="https://i.ibb.co/h9kygL6/tmap-icon.png" alt="티맵" />
+              </a>
+            </div>
+          </div>
+
+          <div id="shuttle" class="tab-content">
+            <p class="tab-address">셔틀버스 탑승 위치: OO역 3번 출구 앞</p>
+            <div class="nav-icons">
+              <a
+                href="nmap://navigation?dlat=37.5080&dlng=127.0600&dname=OO역 3번출구(셔틀버스)&appname=YOUR_APP_NAME"
+              >
+                <img
+                  src="https://i.ibb.co/L8T1Xv7/naver-map-icon.png"
+                  alt="네이버지도"
+                />
+              </a>
+              <a href="kakaomap://route?ep=37.5080,127.0600&by=CAR">
+                <img
+                  src="https://i.ibb.co/Y0KxJvP/kakaomap-icon.png"
+                  alt="카카오내비"
+                />
+              </a>
+              <a
+                href="tmap://route?goalname=OO역 3번출구(셔틀버스)&goaly=37.5080&goalx=127.0600"
+              >
+                <img src="https://i.ibb.co/h9kygL6/tmap-icon.png" alt="티맵" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section guestbook">
+        <h2 class="section-title">축하의 마음을 전해주세요</h2>
+        <form id="guestbook-form">
+          <input type="text" id="guest-name" placeholder="이름" required />
+          <input
+            type="password"
+            id="guest-password"
+            placeholder="비밀번호"
+            required
+          />
+          <textarea
+            id="guest-message"
+            placeholder="소중한 축하 메시지를 남겨주세요."
+            required
+          ></textarea>
+          <button type="submit" class="btn-submit">글 남기기</button>
+        </form>
+        <div id="guestbook-entries"></div>
+      </section>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_APP_KEY&libraries=services"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
